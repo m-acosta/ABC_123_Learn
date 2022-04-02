@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
 import 'dart:math';
+
+import 'package:flutter/material.dart';
+
 import 'stickers.dart';
 
 class IceCream extends StatefulWidget {
@@ -73,7 +75,7 @@ class _IceCreamState extends State<IceCream> {
         width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/clouds.jpeg"),
+            image: AssetImage("assets/images/watercolor-cotton-candy-colors.jpg"),
             fit: BoxFit.cover,
           ),
         ),

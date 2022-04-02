@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'splash.dart';
-import 'home.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +20,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Home Page'),
+      // Normal Entry Point for App
+      home: Splash(title: 'Splash'),
+      // Skip Splash for Developers
+      // home: MyHomePage(title: 'Home Page'),
     );
   }
 }

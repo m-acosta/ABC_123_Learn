@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
+
+import 'package:flutter/material.dart';
+
 import 'home.dart';
 
 class Splash extends StatefulWidget {
@@ -30,7 +32,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
   }
 
   startTime() async {
-    var duration = new Duration(seconds: 6);
+    var duration = new Duration(seconds: 3);
     return new Timer(duration, route);
   }
 
@@ -49,32 +51,42 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-              child: Text(
-                  'ABC 123 Learn',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                  )
-              )
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/watercolor-cotton-candy-colors.jpg"),
+            fit: BoxFit.cover,
           ),
-          SizedBox(
-            height: 40,
-          ),
-          Center(
-            child: RotationTransition(
-              turns: animation,
-              child: SizedBox(
-                height: 200,
-                width: 200,
-                child: Image.asset('assets/images/color wheel.png')
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+                child: Text(
+                    'ABC 123 Learn',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                    )
+                )
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            Center(
+              child: RotationTransition(
+                turns: animation,
+                child: SizedBox(
+                  height: 200,
+                  width: 200,
+                  child: Image.asset('assets/images/color wheel.png')
+                ),
               ),
             ),
-          ),
-        ]
+          ]
+        ),
       )
     );
   }

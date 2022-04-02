@@ -9,43 +9,56 @@ class Stickers extends StatefulWidget {
   _StickersState createState() => _StickersState();
 }
 
+List<String> _stickers;
+List<bool> _unlocked;
+int maxStickers;
+int currentlyUnlocked;
+
 class _StickersState extends State<Stickers> {
-
-  List<String> _stickers = <String>[
-    'assets/images/stickers/balloons.jpg',
-    'assets/images/stickers/bee.jpg',
-    'assets/images/stickers/bird.png',
-    'assets/images/stickers/boat.jpeg',
-    'assets/images/stickers/car.jpg',
-    'assets/images/stickers/cupcake.png',
-    'assets/images/stickers/rainbow.jpeg',
-    'assets/images/stickers/star.jpg',
-    'assets/images/stickers/unicorn.png',
-  ];
-  List<bool> _unlocked = <bool>[
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
-  ];
-
   @override
   void initState() {
     super.initState();
-    print(_unlocked);
+    if (_unlocked == null || _stickers == null) {
+      clearUnlocks();
+    }
+    unlockNextSticker();
+    setState(() {
+
+    });
+  }
+
+  void clearUnlocks() {
+    _stickers = <String>[
+      'assets/images/stickers/balloons.jpg',
+      'assets/images/stickers/bee.jpg',
+      'assets/images/stickers/bird.png',
+      'assets/images/stickers/boat.jpeg',
+      'assets/images/stickers/car.jpg',
+      'assets/images/stickers/cupcake.png',
+      'assets/images/stickers/rainbow.jpeg',
+      'assets/images/stickers/star.jpg',
+      'assets/images/stickers/unicorn.png',
+    ];
+    _unlocked = <bool>[
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ];
+    maxStickers = _unlocked.length;
+    currentlyUnlocked = 0;
+  }
+
+  void unlockNextSticker() {
     for (int i = 0; i < _unlocked.length; i++) {
       if (!_unlocked.elementAt(i)) {
-        // make the element true
         _unlocked.replaceRange(i, (i + 1), [true]);
-        print(_unlocked);
-        setState(() {
-
-        });
+        currentlyUnlocked = (_unlocked.lastIndexOf(true)) + 1;
         break;
       }
     }
@@ -58,63 +71,85 @@ class _StickersState extends State<Stickers> {
         actions: <Widget>[
         ],
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text('Stickers Collected')
-                ],
-              )
-            ),
-            Expanded(
-              flex: 2,
-              child: Container(
-                margin: const EdgeInsets.only(left: 100, right: 100),
-                child: GridView.builder(
-                  padding: const EdgeInsets.all(0),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
-                    childAspectRatio: 1,
-                  ),
-                  itemCount: _stickers.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    if (_unlocked[index]) {
-                      return Card(
-                        child: Container(
-                          child: Image.asset(
-                            _stickers[index],
-                            fit: BoxFit.fill,
-                          )
-                        ),
-                      );
-                    }
-                    else {
-                      return Card(
-                        child: Container(
-                            foregroundDecoration: BoxDecoration(
-                              color: Colors.grey,
-                              backgroundBlendMode: BlendMode.saturation,
-                            ),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/watercolor-cotton-candy-colors.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: Column(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                        'Stickers Collected ' +
+                            '${currentlyUnlocked}/${maxStickers}'
+                    ),
+
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Container(
+                  margin: const EdgeInsets.only(left: 100, right: 100),
+                  child: GridView.builder(
+                    padding: const EdgeInsets.all(0),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                      childAspectRatio: 1,
+                    ),
+                    itemCount: _stickers.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      if (_unlocked[index]) {
+                        return Card(
+                          child: Container(
                             child: Image.asset(
                               _stickers[index],
                               fit: BoxFit.fill,
                             )
-                        ),
-                      );
+                          ),
+                        );
+                      }
+                      else {
+                        return Card(
+                          child: Container(
+                              foregroundDecoration: BoxDecoration(
+                                color: Colors.grey,
+                                backgroundBlendMode: BlendMode.saturation,
+                              ),
+                              child: Image.asset(
+                                _stickers[index],
+                                fit: BoxFit.fill,
+                              )
+                          ),
+                        );
+                      }
                     }
-                  }
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Text('Stickers')
-            ),
-          ],
+              Expanded(
+                flex: 1,
+                child: OutlinedButton(
+                    onPressed: () {
+                      clearUnlocks();
+                      setState(() {
+
+                      });
+                    },
+                    child: Text('Clear Progress')
+                ),
+              ),
+            ],
+          ),
         ),
       )
     );

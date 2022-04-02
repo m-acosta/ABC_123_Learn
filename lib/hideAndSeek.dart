@@ -1,6 +1,6 @@
 import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:kids_learning/stickers.dart';
 
 class HideAndSeek extends StatefulWidget {
@@ -61,47 +61,57 @@ class _HideAndSeekState extends State<HideAndSeek> {
         actions: <Widget>[
         ],
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Expanded(
-              child: GridView.builder(
-                  padding: const EdgeInsets.all(0),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 5,
-                    childAspectRatio: 5/2,
-                  ),
-                  itemCount: _numbers.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    int numberOnCard = _numbers.elementAt(index);
-                    String stringRepresentation = numberOnCard.toString();
-                    if (numberOnCard > _maxValue) {
-                      stringRepresentation = "";
-                    }
-                    return Card(
-                      child: InkWell(
-                        onTap: () {
-                          if (_current == numberOnCard) {
-                            successfulTap();
-                          }
-                          else {
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/watercolor-cotton-candy-colors.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: Column(
+            children: [
+              Expanded(
+                child: GridView.builder(
+                    padding: const EdgeInsets.all(0),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 5,
+                      childAspectRatio: 5/2,
+                    ),
+                    itemCount: _numbers.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      int numberOnCard = _numbers.elementAt(index);
+                      String stringRepresentation = numberOnCard.toString();
+                      if (numberOnCard > _maxValue) {
+                        stringRepresentation = "";
+                      }
+                      return Card(
+                        child: InkWell(
+                          onTap: () {
+                            if (_current == numberOnCard) {
+                              successfulTap();
+                            }
+                            else {
 
-                          }
-                        },
-                        child: Container(
-                            child: Center(
-                              child: Text(
-                                '$stringRepresentation',
-                                textAlign: TextAlign.center,
-                              ),
-                            )
+                            }
+                          },
+                          child: Container(
+                              child: Center(
+                                child: Text(
+                                  '$stringRepresentation',
+                                  textAlign: TextAlign.center,
+                                ),
+                              )
+                          ),
                         ),
-                      ),
-                    );
-                  }
+                      );
+                    }
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       )
     );
