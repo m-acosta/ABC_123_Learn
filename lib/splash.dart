@@ -81,7 +81,9 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
                 child: SizedBox(
                   height: 200,
                   width: 200,
-                  child: Image.asset('assets/images/color wheel.png')
+                  child: Image.asset(
+                    'assets/images/transparent-color-wheel.png',
+                  )
                 ),
               ),
             ),

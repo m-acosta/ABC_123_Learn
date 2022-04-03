@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'splash.dart';
+import 'home.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,13 +17,13 @@ class MyApp extends StatelessWidget {
       title: 'ABC 123 Learn',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.purple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       // Normal Entry Point for App
-      home: Splash(title: 'Splash'),
+      // home: Splash(title: 'Splash'),
       // Skip Splash for Developers
-      // home: MyHomePage(title: 'Home Page'),
+      home: MyHomePage(title: 'Home Page'),
     );
   }
 }

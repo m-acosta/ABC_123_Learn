@@ -75,7 +75,7 @@ class _HideAndSeekState extends State<HideAndSeek> {
             children: [
               Expanded(
                 child: GridView.builder(
-                    padding: const EdgeInsets.all(0),
+                    padding: const EdgeInsets.all(20),
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 5,
                       childAspectRatio: 5/2,
@@ -87,23 +87,26 @@ class _HideAndSeekState extends State<HideAndSeek> {
                       if (numberOnCard > _maxValue) {
                         stringRepresentation = "";
                       }
-                      return Card(
-                        child: InkWell(
-                          onTap: () {
-                            if (_current == numberOnCard) {
-                              successfulTap();
-                            }
-                            else {
+                      return Opacity(
+                        opacity: 0.7,
+                        child: Card(
+                          child: InkWell(
+                            onTap: () {
+                              if (_current == numberOnCard) {
+                                successfulTap();
+                              }
+                              else {
 
-                            }
-                          },
-                          child: Container(
+                              }
+                            },
+                            child: Container(
                               child: Center(
                                 child: Text(
                                   '$stringRepresentation',
                                   textAlign: TextAlign.center,
                                 ),
                               )
+                            ),
                           ),
                         ),
                       );

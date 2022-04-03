@@ -23,7 +23,6 @@ class _StickersState extends State<Stickers> {
     }
     unlockNextSticker();
     setState(() {
-
     });
   }
 
@@ -92,7 +91,6 @@ class _StickersState extends State<Stickers> {
                         'Stickers Collected ' +
                             '${currentlyUnlocked}/${maxStickers}'
                     ),
-
                   ],
                 ),
               ),
@@ -142,7 +140,6 @@ class _StickersState extends State<Stickers> {
                     onPressed: () {
                       clearUnlocks();
                       setState(() {
-
                       });
                     },
                     child: Text('Clear Progress')

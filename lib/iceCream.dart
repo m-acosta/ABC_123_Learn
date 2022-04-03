@@ -16,23 +16,25 @@ class IceCream extends StatefulWidget {
 class _IceCreamState extends State<IceCream> {
   String _letters = '';
   String _answer = '';
+  int numberOfScoops = 4;
+  List<int> colorCodes = <int>[50, 200, 400, 600];
+  final _rnd = Random();
 
   @override
   void initState() {
-      super.initState();
-      _letters = chooseLetters();
-      _answer = selectLetter(_letters);
+    super.initState();
+    _letters = chooseLetters();
+    _answer = selectLetter(_letters);
   }
 
   String randomLetter() {
     String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    final _rnd = Random();
     return alphabet[_rnd.nextInt(alphabet.length)];
   }
 
   String chooseLetters() {
     String chosen = "";
-    while (chosen.length < 4){
+    while (chosen.length < numberOfScoops){
       String currentLetter = randomLetter();
       if (!chosen.contains(currentLetter)) {
         chosen += currentLetter;
@@ -44,16 +46,14 @@ class _IceCreamState extends State<IceCream> {
   }
 
   String selectLetter(String fourLetters) {
-      final _rnd = Random();
-      String s = fourLetters[_rnd.nextInt(fourLetters.length)];
-      setState(() {
-      });
-      return s;
+    String s = fourLetters[_rnd.nextInt(fourLetters.length)];
+    setState(() {
+    });
+    return s;
   }
 
   void rollForSticker() {
-    final _rnd = Random();
-    int dropRate = 3;
+    int dropRate = numberOfScoops - 1;
     int temp = _rnd.nextInt(dropRate) + 1;
     if (temp == dropRate) {
       Navigator.push(
@@ -88,83 +88,44 @@ class _IceCreamState extends State<IceCream> {
                 Text("Please choose the letter: " + _answer)
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: [
-                    IconButton(
-                        icon: Image.asset("assets/images/ice cream scoop.jpg"),
-                        onPressed: () {
-                          if (_answer == _letters[0]) {
-                            rollForSticker();
-                            _letters = chooseLetters();
-                            _answer = selectLetter(_letters);
-                          }
-                          else {
-
-                          }
-                        }
+            Container(
+              height: 280,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.all(20),
+                itemCount: numberOfScoops,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    width: 150,
+                    child: Column(
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            if (_answer == _letters[index]) {
+                              rollForSticker();
+                              _letters = chooseLetters();
+                              _answer = selectLetter(_letters);
+                            }
+                            else {
+                            }
+                          },
+                          child: Column(
+                            children: [
+                              Image.asset(
+                                "assets/images/ice_cream_top.png",
+                                color: Colors.yellow[colorCodes[_rnd.nextInt(4)]],
+                                colorBlendMode: BlendMode.modulate,
+                              ),
+                              Text(_letters[index]),
+                            ]
+                          )
+                        )
+                      ],
                     ),
-                    Text(_letters[0]),
-                  ],
-                ),
-                Column(
-                  children: [
-                    IconButton(
-                        icon: Image.asset("assets/images/ice cream scoop.jpg"),
-                        onPressed: () {
-                          if (_answer == _letters[1]) {
-                            rollForSticker();
-                            _letters = chooseLetters();
-                            _answer = selectLetter(_letters);
-                          }
-                          else {
-
-                          }
-                        }
-                    ),
-                    Text(_letters[1]),
-                  ],
-                ),
-                Column(
-                  children: [
-                    IconButton(
-                        icon: Image.asset("assets/images/ice cream scoop.jpg"),
-                        onPressed: () {
-                          if (_answer == _letters[2]) {
-                            rollForSticker();
-                            _letters = chooseLetters();
-                            _answer = selectLetter(_letters);
-                          }
-                          else {
-
-                          }
-                        }
-                    ),
-                    Text(_letters[2]),
-                  ],
-                ),
-                Column(
-                  children: [
-                    IconButton(
-                        icon: Image.asset("assets/images/ice cream scoop.jpg"),
-                        onPressed: () {
-                          if (_answer == _letters[3]) {
-                            rollForSticker();
-                            _letters = chooseLetters();
-                            _answer = selectLetter(_letters);
-                          }
-                          else {
-
-                          }
-                        }
-                    ),
-                    Text(_letters[3]),
-                  ],
-                ),
-              ],
-            ),
+                  );
+                },
+              ),
+            )
           ],
         ),
       ),

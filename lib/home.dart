@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'hideAndSeek.dart';
 import 'iceCream.dart';
-import 'stickers.dart';
+import 'splash.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -18,20 +18,19 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        // Uncomment when possible, current problem with visibility
-        // height: double.infinity,
-        // width: double.infinity,
-        // decoration: BoxDecoration(
-        //   image: DecorationImage(
-        //     image: AssetImage("assets/images/watercolor-cotton-candy-colors.jpg"),
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/watercolor-cotton-candy-colors.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              OutlinedButton(
+              ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -40,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: Text("Hide and Seek"),
               ),
-              OutlinedButton(
+              ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -49,14 +48,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: Text("Ice Cream"),
               ),
-              OutlinedButton(
+              ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Stickers()),
+                    MaterialPageRoute(builder: (context) => Splash()),
                   );
                 },
-                child: Text("Stickers"),
+                child: Text("Credits"),
               ),
             ],
           ),
