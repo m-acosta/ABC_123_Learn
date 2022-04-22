@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kids_learning/splash.dart';
 
 import 'firebase_options.dart';
-import 'home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,9 +26,9 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       // Normal Entry Point for App
-      // home: Splash(title: 'Splash'),
+      home: Splash(title: 'Splash'),
       // Skip Splash for Developers
-      home: MyHomePage(title: 'Home Page'),
+      // home: MyHomePage(title: 'Home Page'),
     );
   }
 }

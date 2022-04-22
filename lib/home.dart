@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'hideAndSeek.dart';
 import 'iceCream.dart';
-import 'splash.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -47,15 +46,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
                 child: Text("Ice Cream"),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Splash()),
-                  );
-                },
-                child: Text("Credits"),
               ),
             ],
           ),

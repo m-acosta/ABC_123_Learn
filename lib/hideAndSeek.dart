@@ -13,7 +13,7 @@ class HideAndSeek extends StatefulWidget {
 }
 
 class _HideAndSeekState extends State<HideAndSeek> {
-  List<int> _numbers = List<int>();
+  List<int> _numbers = [];
   int _current;
   int _maxValue = 5;
 
