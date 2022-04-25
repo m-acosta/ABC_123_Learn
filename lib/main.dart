@@ -25,10 +25,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // Normal Entry Point for App
       home: Splash(title: 'Splash'),
-      // Skip Splash for Developers
-      // home: MyHomePage(title: 'Home Page'),
     );
   }
 }
