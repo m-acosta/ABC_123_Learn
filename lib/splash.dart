@@ -67,13 +67,12 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
                 child: Text(
                     'ABC 123 Learn',
                     style: TextStyle(
-                      color: Colors.black,
                       fontSize: 20,
                     )
                 )
             ),
             SizedBox(
-              height: 40,
+              height: 20,
             ),
             Center(
               child: RotationTransition(
@@ -85,6 +84,17 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
                     'assets/images/transparent-color-wheel.png',
                   )
                 ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text("Special thanks to Daisy May Edwards for use of her artwork!"),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Image.asset(
+                'assets/images/icon/transparent icon.png',
+                scale: 5,
               ),
             ),
           ]

@@ -85,11 +85,17 @@ class _IceCreamState extends State<IceCream> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Please choose the letter: " + _answer)
+                Text(
+                    "Please choose the letter: " + _answer,
+                    style: TextStyle(
+                      fontSize: 20,
+                    )
+                ),
               ],
             ),
             Container(
-              height: 280,
+              height: 200,
+              margin: EdgeInsets.only(left: 50, right: 50),
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.all(20),
@@ -116,7 +122,12 @@ class _IceCreamState extends State<IceCream> {
                                 color: Colors.yellow[colorCodes[_rnd.nextInt(4)]],
                                 colorBlendMode: BlendMode.modulate,
                               ),
-                              Text(_letters[index]),
+                              Text(
+                                  _letters[index],
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  )
+                              ),
                             ]
                           )
                         )

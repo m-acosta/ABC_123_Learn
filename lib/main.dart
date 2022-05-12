@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        fontFamily: 'PermanentMarker-Regular',
       ),
       home: Splash(title: 'Splash'),
     );

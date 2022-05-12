@@ -36,7 +36,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     MaterialPageRoute(builder: (context) => HideAndSeek()),
                   );
                 },
-                child: Text("Hide and Seek"),
+                child: Image.asset(
+                  'assets/images/123.png',
+                  height: 100,
+                  width: 100,
+                ),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -45,7 +49,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     MaterialPageRoute(builder: (context) => IceCream()),
                   );
                 },
-                child: Text("Ice Cream"),
+                child: Image.asset(
+                  'assets/images/ice_cream_top.png',
+                  height: 100,
+                  width: 100,
+                ),
               ),
             ],
           ),
